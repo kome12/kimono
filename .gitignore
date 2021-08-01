@@ -1,3 +1,5 @@
 raw_data/
 *.pdf
 graphs/
+.DS_Store
+*.png

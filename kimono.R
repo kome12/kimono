@@ -1,10 +1,10 @@
 library(ggplot2)
 
-# data <- read.csv("/Users/ko/Documents/mom/kimono/raw_data/kimono_aggregated_data.csv", header=TRUE)
-# data <- read.csv("/Users/ko/Documents/mom/kimono/raw_data/kimono_raw_data_a.csv", header=TRUE)
-# data <- read.csv("/Users/ko/Documents/mom/kimono/raw_data/kimono_aggregated_data.csv", header=TRUE)
-nihonData <- read.csv("/Users/ko/Documents/mom/kimono/raw_data/kimono_nihon_data.csv", header=TRUE)
-basicData <- read.csv("/Users/ko/Documents/mom/kimono/raw_data/kimono_basic_data.csv", header=TRUE)
+# data <- read.csv("/Users/ko/GitHub/kimono/raw_data/kimono_aggregated_data.csv", header=TRUE)
+# data <- read.csv("/Users/ko/GitHub/kimono/raw_data/kimono_raw_data_a.csv", header=TRUE)
+# data <- read.csv("/Users/ko/GitHub/kimono/raw_data/kimono_aggregated_data.csv", header=TRUE)
+nihonData <- read.csv("/Users/ko/GitHub/kimono/raw_data/kimono_nihon_data.csv", header=TRUE)
+basicData <- read.csv("/Users/ko/GitHub/kimono/raw_data/kimono_basic_data.csv", header=TRUE)
 
 # head(data)
 # summary(data)
@@ -17,15 +17,17 @@ basicData <- read.csv("/Users/ko/Documents/mom/kimono/raw_data/kimono_basic_data
 
 # print(violin)
 
+
 nihonViolin <- ggplot(nihonData, aes(x = Type, y = Rank, color = Type)) +
   geom_violin() + 
-  stat_summary(fun = "median", geom = "point", size = 3, color = "gray") +
-  labs(title="Nihon", x="Types", y="Rank")
+  stat_summary(fun = "mean", geom = "point", size = 1, color = "red") +
+  labs(x=" ", y=" ", color=" ")
+  # theme(text = element_text(family = "HiraKakuProN-W3"))
 
 basicViolin <- ggplot(basicData, aes(x = Type, y = Rank, color = Type)) +
   geom_violin() +
-  stat_summary(fun = "median", geom = "point", shape = 2, size = 3, color = "red")  +
-  labs(title="Basic", x="Types", y="Rank")
+  stat_summary(fun = "mean", geom = "point", size = 1, color = "red") +
+  labs(title=" ", x=" ", y=" ", color="")
 
 # print(nihonViolin)
 # print(basicViolin)
@@ -63,19 +65,21 @@ library(plotrix)
  # adding a violin to existing plot
 #  violin_plot(normvar2,at=3,add=TRUE,col="green",violin_width=1)
 
+    # geom_boxplot(data=plot_Data, aes(x=factor(cyl), y=mpg, col=factor(cyl))) + 
 
 nihonBoxPlot <- ggplot(nihonData, aes(x = Type, y = Rank, fill = Type)) +
   geom_boxplot(width = 0.2) +
-  stat_summary(fun = "median", geom = "point", size = 3, color = "gray") +
-  stat_summary(fun = "mean", geom = "point", shape = 18, size = 3, color = "gray26") +
-  labs(title="Nihon", x="Types", y="Rank")
+  # geom_point(data=nihonData[nihonData$Rank > nihonData$upper.limit | nihonData$Rank < nihonData$lower.limit,], aes(x=Type, y=Rank, fill = Type)) +
+  # stat_summary(fun = "median", geom = "point", size = 3, color = "gray") +
+  # stat_summary(fun = "mean", geom = "point", size = 1, color = "red") +
+  labs(title=" ", x=" ", y=" ", fill = " ")
 
 # print(nihonBoxPlot)
 
 basicBoxPlot <- ggplot(basicData, aes(x = Type, y = Rank, fill = Type)) +
   geom_boxplot(width = 0.2) +
-  stat_summary(fun = "median", geom = "point", size = 3, color = "gray") +
-  stat_summary(fun = "mean", geom = "point", shape = 18, size = 3, color = "gray26") +
-  labs(title="Basic", x="Types", y="Rank")
+  # stat_summary(fun = "median", geom = "point", size = 3, color = "gray") +
+  # stat_summary(fun = "mean", geom = "point", shape = 18, size = 3, color = "gray26") +
+  labs(title=" ", x=" ", y=" ", fill = " ")
 
 print(basicBoxPlot)

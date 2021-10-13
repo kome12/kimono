@@ -12,9 +12,9 @@ aggregatedPlot <- ggplot(aggregatedData, aes(x = Nihon, y = Basic)) +
 
 aggregatedPlotSplit <- ggplot(aggregatedData, aes(x = Basic, y = Nihon, color = factor(Type))) +
   # geom_point(aes(color = factor(Type))) +
-  geom_point(alpha = 1/4) +
+  geom_point(alpha = 1/2) +
   facet_wrap("Type") +
-    labs(title=" ", x=" ", y=" ", color="")
+    labs(title=" ", x=" ", y=" ", color="") + theme_bw()
   # scale_color_gradientn(colors = rainbow(factor(aggregatedData$Type)))
 
 print(aggregatedPlotSplit)
